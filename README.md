@@ -1,4 +1,4 @@
-# commonmark-ext-notifications
+# commonmark-ext-notifications [![Build Status](https://travis-ci.org/McFoggy/commonmark-ext-notifications.svg)](https://travis-ci.org/McFoggy/commonmark-ext-notifications)
 
 This is a plugin for [commonmark-java](https://github.com/atlassian/commonmark-java) that allows to create _notifications_ paragraphs in markdown like the following (taken from [Isabel Castillo blog](http://isabelcastillo.com/error-info-messages-css))
 
