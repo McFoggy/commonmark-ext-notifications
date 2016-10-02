@@ -13,6 +13,32 @@ using a very simple syntax
 !x This is an error message.
 ```
 
+## Usage
+
+Simply add the extension to the `Parser` & `Renderer` objects.
+
+```java
+Extension notificationExtension = NotificationsExtension.create();
+
+Parser parser = Parser
+		.builder()
+		.extensions(Collections.singleton(notificationExtension))
+		.build();
+
+Node document = parser.parse("! Use Notifications Extension !!!");
+
+HtmlRenderer renderer = HtmlRenderer
+		.builder()
+		.extensions(Collections.singleton(notificationExtension))
+		.build();
+renderer.render(document);
+/*
+	<div class="notification_info">
+	<p>Use Notifications Extension !!!</p>
+	</div>
+ */
+```
+
 ## Build & release
 
 ### Normal build

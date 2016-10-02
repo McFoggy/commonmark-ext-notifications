@@ -31,11 +31,9 @@ public class NotificationBlockParser extends AbstractBlockParser {
 
 	private final NotificationBlock block;
 	private Notification type;
-	private CharSequence line;
 	
-	public NotificationBlockParser(Notification type, CharSequence line) {
+	public NotificationBlockParser(Notification type) {
 		this.type = type;
-		this.line = line;
 		this.block = new NotificationBlock(type);
 	}
 
@@ -74,11 +72,11 @@ public class NotificationBlockParser extends AbstractBlockParser {
 		@Override
 		public BlockStart tryStart(ParserState state, MatchedBlockParser matchedBlockParser) {
 			CharSequence fullLine = state.getLine();
-			CharSequence line = fullLine.subSequence(state.getColumn() + state.getIndent(), fullLine.length());
+			CharSequence line = fullLine.subSequence(state.getColumn(), fullLine.length());
 			Matcher matcher = NOTIFICATIONS_LINE.matcher(line);
 			if (matcher.matches()) {
 				return BlockStart
-						.of(new NotificationBlockParser(Notification.fromString(matcher.group(1)), line))
+						.of(new NotificationBlockParser(Notification.fromString(matcher.group(1))))
 						.atColumn(state.getColumn() + state.getIndent() + matcher.start(2));
 			}
 			return BlockStart.none();

@@ -127,6 +127,7 @@
                         <exclude>.*</exclude>
                         <exclude>src/test/resources/**</exclude>
                         <exclude>src/main/resources/**</exclude>
+                        <exclude>src/test/java/**/SpecIntegrationTest.java</exclude>
                     </excludes>
                 </configuration>
                 <executions>
