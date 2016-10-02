@@ -39,6 +39,18 @@ renderer.render(document);
  */
 ```
 
+## Maven coordinates
+
+You will find the latest version of the extension in [maven central](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22fr.brouillard.oss%22%20AND%20a%3A%22commonmark-ext-notifications%22).
+
+```
+<dependency>
+    <groupId>fr.brouillard.oss</groupId>
+    <artifactId>commonmark-ext-notifications</artifactId>
+    <version>1.0.0</version>
+</dependency>    
+```
+
 ## Build & release
 
 ### Normal build
