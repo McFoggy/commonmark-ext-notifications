@@ -25,7 +25,8 @@
     <packaging>jar</packaging>
 
     <name>commonmark-ext-notifications</name>
-    <url>http://maven.apache.org</url>
+    <description>commonmark extension allowing to handle notifications (info, success, warning, error) messages in markdown</description>
+    <url>https://github.com/McFoggy/commonmark-ext-notifications</url>
 
     <organization>
         <name>Matthieu Brouillard</name>
