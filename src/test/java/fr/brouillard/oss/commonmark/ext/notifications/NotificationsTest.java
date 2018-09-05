@@ -21,7 +21,7 @@ import java.util.Set;
 import org.commonmark.Extension;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
-import org.commonmark.test.RenderingTestCase;
+import org.commonmark.testutil.RenderingTestCase;
 import org.junit.Test;
 
 public class NotificationsTest extends RenderingTestCase {

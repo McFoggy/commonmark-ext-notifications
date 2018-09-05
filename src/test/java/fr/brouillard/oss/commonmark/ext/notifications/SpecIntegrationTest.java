@@ -8,8 +8,8 @@ import java.util.Map;
 import org.commonmark.Extension;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
-import org.commonmark.spec.SpecExample;
-import org.commonmark.test.SpecTestCase;
+import org.commonmark.testutil.SpecTestCase;
+import org.commonmark.testutil.spec.SpecExample;
 import org.junit.Test;
 
 /**
