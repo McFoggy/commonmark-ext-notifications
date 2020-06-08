@@ -22,6 +22,7 @@ import org.commonmark.Extension;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 import org.commonmark.testutil.RenderingTestCase;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class NotificationsTest extends RenderingTestCase {
@@ -78,5 +79,15 @@ public class NotificationsTest extends RenderingTestCase {
 	@Test
 	public void embeddedMessageAndListInsideNotification() {
 		assertRendering("! info message:\n! - point 1\n! - point 2", "<div class=\"notification_info\">\n<p>info message:</p>\n<ul>\n<li>point 1</li>\n<li>point 2</li>\n</ul>\n</div>\n");
+	}
+	
+	@Test
+	public void sameNotificationOnMultiLineIshandledAsBlock() {
+		assertRendering("! info line1\n! info line2", "<div class=\"notification_info\">\n<p>info line1\ninfo line2</p>\n</div>\n");
+	}
+
+	@Test
+	public void differentContiguousNotificationAreRenderedSeparately() {
+		assertRendering("! info line1\n!v success line2", "<div class=\"notification_info\">\n<p>info line1</p>\n</div>\n<div class=\"notification_success\">\n<p>success line2</p>\n</div>\n");
 	}
 }
