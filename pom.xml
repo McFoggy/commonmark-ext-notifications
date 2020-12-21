@@ -68,7 +68,7 @@
         <version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
 
         <version.commonmark>0.15.1</version.commonmark>
-        <version.junit>4.13</version.junit>
+        <version.junit>4.13.1</version.junit>
         <version.ossindex-maven-enforcer-rules>3.1.0</version.ossindex-maven-enforcer-rules>
     </properties>
 
