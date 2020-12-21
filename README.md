@@ -1,7 +1,7 @@
 # commonmark-ext-notifications
 
 [![Maven Central status](https://img.shields.io/maven-central/v/fr.brouillard.oss/commonmark-ext-notifications.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A"fr.brouillard.oss"%20AND%20a%3A"commonmark-ext-notifications")
-[![Build Status](https://travis-ci.org/McFoggy/commonmark-ext-notifications.svg)](https://travis-ci.org/McFoggy/commonmark-ext-notifications)
+![Java CI with Maven](https://github.com/McFoggy/commonmark-ext-notifications/workflows/Java%20CI%20with%20Maven/badge.svg)
 
 This is a plugin for [commonmark-java](https://github.com/atlassian/commonmark-java) that allows to create _notifications_ paragraphs in markdown like the following (taken from [Isabel Castillo blog](http://isabelcastillo.com/error-info-messages-css))
 
