@@ -22,14 +22,33 @@ import org.commonmark.renderer.html.HtmlNodeRendererContext;
 import org.commonmark.renderer.html.HtmlNodeRendererFactory;
 import org.commonmark.renderer.html.HtmlRenderer;
 
+import java.util.Objects;
+
 public class NotificationsExtension implements Parser.ParserExtension, HtmlRenderer.HtmlRendererExtension {
+	private final DomElementMapper domElementMapper;
+	private final ClassMapper classMapper;
+
 	private NotificationsExtension() {
+		this(DefaultWrapperImplementations.DEFAULT_DOM_ELEMENT_MAPPER, DefaultWrapperImplementations.DEFAULT_CSS_CLASS_MAPPER);
 	}
-	
-    public static Extension create() {
+
+	private NotificationsExtension(DomElementMapper domElementMapper, ClassMapper classMapper) {
+		this.domElementMapper = Objects.requireNonNull(domElementMapper);
+		this.classMapper = Objects.requireNonNull(classMapper);
+	}
+
+	public NotificationsExtension withDomElementMapper(DomElementMapper domElementMapper) {
+		return new NotificationsExtension(domElementMapper, this.classMapper);
+	}
+
+	public NotificationsExtension withClassMapper(ClassMapper classMapper) {
+		return new NotificationsExtension(this.domElementMapper, classMapper);
+	}
+
+    public static NotificationsExtension create() {
         return new NotificationsExtension();
     }
-    
+
 	@Override
 	public void extend(org.commonmark.parser.Parser.Builder parserBuilder) {
 		parserBuilder.customBlockParserFactory(new NotificationBlockParser.Factory());
@@ -37,11 +56,16 @@ public class NotificationsExtension implements Parser.ParserExtension, HtmlRende
 
 	@Override
 	public void extend(org.commonmark.renderer.html.HtmlRenderer.Builder htmlBuilder) {
-		htmlBuilder.nodeRendererFactory(new HtmlNodeRendererFactory() {
-            @Override
-            public NodeRenderer create(HtmlNodeRendererContext context) {
-                return new NotificationNodeRenderer(context);
-            }
-        });
+		htmlBuilder.nodeRendererFactory(context -> new NotificationNodeRenderer(context, this.domElementMapper, this.classMapper));
+	}
+
+	@FunctionalInterface
+	public interface DomElementMapper {
+		String domElement(Notification n);
+	}
+
+	@FunctionalInterface
+	public interface ClassMapper {
+		String cssClass(Notification n);
 	}
 }

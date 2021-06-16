@@ -42,6 +42,36 @@ renderer.render(document);
  */
 ```
 
+### Configuration
+
+If you want specific rendering to adapt to an existing CSS framework you can define which HTML node will be rendered (see `NotificationsExtension.withDomElementMapper`) or which CSS classes (see `NotificationsExtension.withClassMapper`) will be applied.
+
+For exemple to render [Boostrap Alerts](https://getbootstrap.com/docs/5.0/components/alerts/), you could use:
+
+```java
+Extension notificationExtension = NotificationsExtension.create()
+        .withClassMapper(n -> n == Notification.ERROR ? "alert alert-danger" : "alert alert-" + n.name().toLowerCase());
+
+Parser parser = Parser
+		.builder()
+		.extensions(Collections.singleton(notificationExtension))
+		.build();
+
+Node document = parser.parse("! Use Notifications Extension !!!");
+
+HtmlRenderer renderer = HtmlRenderer
+		.builder()
+		.extensions(Collections.singleton(notificationExtension))
+		.build();
+renderer.render(document);
+/*
+	<div class="alert alert-info">
+	<p>Use Notifications Extension !!!</p>
+	</div>
+ */
+```
+
+
 ## Maven coordinates
 
 You will find the latest version of the extension in [maven central](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22fr.brouillard.oss%22%20AND%20a%3A%22commonmark-ext-notifications%22).

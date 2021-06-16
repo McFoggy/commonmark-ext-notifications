@@ -27,10 +27,18 @@ import org.commonmark.renderer.html.HtmlWriter;
 public class NotificationNodeRenderer implements NodeRenderer {
 	private final HtmlNodeRendererContext context;
 	private final HtmlWriter htmlWriter;
+	private NotificationsExtension.DomElementMapper domElementMapper;
+	private NotificationsExtension.ClassMapper classMapper;
 
 	public NotificationNodeRenderer(HtmlNodeRendererContext context) {
+		this(context, DefaultWrapperImplementations.DEFAULT_DOM_ELEMENT_MAPPER, DefaultWrapperImplementations.DEFAULT_CSS_CLASS_MAPPER);
+	}
+
+	public NotificationNodeRenderer(HtmlNodeRendererContext context, NotificationsExtension.DomElementMapper domElementMapper, NotificationsExtension.ClassMapper classMapper) {
 		this.context = context;
 		this.htmlWriter = context.getWriter();
+		this.domElementMapper = domElementMapper;
+		this.classMapper = classMapper;
 	}
 
 	@Override
@@ -43,9 +51,11 @@ public class NotificationNodeRenderer implements NodeRenderer {
 		NotificationBlock nb = (NotificationBlock) node;
 
 		htmlWriter.line();
-		htmlWriter.tag("div", Collections.singletonMap("class", classOf(nb.getType())));
+		Notification n = nb.getType();
+		String domElement = domElementMapper.domElement(n);
+		htmlWriter.tag(domElement, Collections.singletonMap("class", classMapper.cssClass(n)));
 		renderChildren(nb);
-		htmlWriter.tag("/div");
+		htmlWriter.tag("/" + domElement);
 		htmlWriter.line();
 	}
 
@@ -56,9 +66,5 @@ public class NotificationNodeRenderer implements NodeRenderer {
 			context.render(node);
 			node = next;
 		}
-	}
-	
-	private static String classOf(Notification n) {
-		return "notification_" + n.name().toLowerCase(Locale.ENGLISH);
 	}
 }
