@@ -80,7 +80,7 @@ You will find the latest version of the extension in [maven central](http://sear
 <dependency>
     <groupId>fr.brouillard.oss</groupId>
     <artifactId>commonmark-ext-notifications</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>    
 ```
 
