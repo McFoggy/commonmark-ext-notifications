@@ -67,7 +67,7 @@
         <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
         <version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
 
-        <version.commonmark>0.15.1</version.commonmark>
+        <version.commonmark>0.18.1</version.commonmark>
         <version.junit>4.13.1</version.junit>
         <version.ossindex-maven-enforcer-rules>3.1.0</version.ossindex-maven-enforcer-rules>
     </properties>
@@ -86,12 +86,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.atlassian.commonmark</groupId>
+            <groupId>org.commonmark</groupId>
             <artifactId>commonmark</artifactId>
             <version>${version.commonmark}</version>
         </dependency>
         <dependency>
-            <groupId>com.atlassian.commonmark</groupId>
+            <groupId>org.commonmark</groupId>
             <artifactId>commonmark-test-util</artifactId>
             <version>${version.commonmark}</version>
             <scope>test</scope>

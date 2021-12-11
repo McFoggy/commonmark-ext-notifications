@@ -54,7 +54,7 @@ public class NotificationBlockParser extends AbstractBlockParser {
 
 	@Override
 	public BlockContinue tryContinue(ParserState state) {
-        CharSequence fullLine = state.getLine();
+        CharSequence fullLine = state.getLine().getContent();
         CharSequence currentLine = fullLine.subSequence(state.getColumn() + state.getIndent(), fullLine.length());
 
 		Matcher matcher = NOTIFICATIONS_LINE.matcher(currentLine);
@@ -71,7 +71,7 @@ public class NotificationBlockParser extends AbstractBlockParser {
 
 		@Override
 		public BlockStart tryStart(ParserState state, MatchedBlockParser matchedBlockParser) {
-			CharSequence fullLine = state.getLine();
+			CharSequence fullLine = state.getLine().getContent();
 			CharSequence line = fullLine.subSequence(state.getColumn(), fullLine.length());
 			Matcher matcher = NOTIFICATIONS_LINE.matcher(line);
 			if (matcher.matches()) {
