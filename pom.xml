@@ -67,9 +67,11 @@
         <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
         <version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
 
-        <version.commonmark>0.18.1</version.commonmark>
+        <version.commonmark>0.21.0</version.commonmark>
         <version.junit>4.13.1</version.junit>
         <version.ossindex-maven-enforcer-rules>3.1.0</version.ossindex-maven-enforcer-rules>
+
+        <module-name>fr.brouillard.oss.commonmark.ext.notifications</module-name>
     </properties>
 
     <developers>
@@ -143,6 +145,7 @@
                         </manifest>
                         <manifestEntries>
                             <X-Git-CommitId>${jgitver.git_sha1_full}</X-Git-CommitId>
+                            <Automatic-Module-Name>${module-name}</Automatic-Module-Name>
                         </manifestEntries>
                     </archive>
                 </configuration>
