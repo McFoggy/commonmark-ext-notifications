@@ -55,8 +55,6 @@
     </issueManagement>
     
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <version.maven-enforcer-plugin>3.0.0-M3</version.maven-enforcer-plugin>
@@ -67,11 +65,12 @@
         <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
         <version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
 
-        <version.commonmark>0.21.0</version.commonmark>
+        <version.commonmark>0.24.0</version.commonmark>
         <version.junit>4.13.1</version.junit>
         <version.ossindex-maven-enforcer-rules>3.1.0</version.ossindex-maven-enforcer-rules>
 
         <module-name>fr.brouillard.oss.commonmark.ext.notifications</module-name>
+        <version.maven-compiler-plugin>3.13.0</version.maven-compiler-plugin>
     </properties>
 
     <developers>
@@ -107,6 +106,14 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${version.maven-compiler-plugin}</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
