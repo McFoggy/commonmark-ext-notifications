@@ -18,6 +18,12 @@ using a very simple syntax
 
 ## Usage
 
+> [!WARNING]
+> Since `2.0.0`:
+> * this extension is provided as a java module named `fr.brouillard.oss.commonmark.ext.notifications`
+> * `java 11` is a minimal requirement to use this extension
+
+
 Simply add the extension to the `Parser` & `Renderer` objects.
 
 ```java
@@ -80,7 +86,7 @@ You will find the latest version of the extension in [maven central](http://sear
 <dependency>
     <groupId>fr.brouillard.oss</groupId>
     <artifactId>commonmark-ext-notifications</artifactId>
-    <version>1.1.0</version>
+    <version>2.0.0</version>
 </dependency>    
 ```
 
