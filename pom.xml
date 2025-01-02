@@ -71,6 +71,7 @@
 
         <module-name>fr.brouillard.oss.commonmark.ext.notifications</module-name>
         <version.maven-compiler-plugin>3.13.0</version.maven-compiler-plugin>
+        <version.pitest-parent>1.16.1</version.pitest-parent>
     </properties>
 
     <developers>
@@ -85,6 +86,16 @@
         </developer>
     </developers>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-parent</artifactId>
+                <version>${version.pitest-parent}</version>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.commonmark</groupId>
@@ -112,6 +123,18 @@
                 <version>${version.maven-compiler-plugin}</version>
                 <configuration>
                     <release>11</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <configuration>
+                    <targetClasses>
+                        <param>fr.brouillard.oss.commonmark.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>fr.brouillard.oss.commonmark.*</param>
+                    </targetTests>
                 </configuration>
             </plugin>
             <plugin>
@@ -210,6 +233,26 @@
                                     </rules>
                                     <fail>true</fail>
                                 </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>mutation</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <executions>
+                            <execution>
+                                <id>mutation-testing</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>mutationCoverage</goal>
+                                </goals>
                             </execution>
                         </executions>
                     </plugin>
