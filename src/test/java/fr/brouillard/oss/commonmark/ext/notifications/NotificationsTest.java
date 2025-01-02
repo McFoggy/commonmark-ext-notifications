@@ -90,4 +90,14 @@ public class NotificationsTest extends RenderingTestCase {
 	public void differentContiguousNotificationAreRenderedSeparately() {
 		assertRendering("! info line1\n!v success line2", "<div class=\"notification_info\">\n<p>info line1</p>\n</div>\n<div class=\"notification_success\">\n<p>success line2</p>\n</div>\n");
 	}
+
+	@Test
+	public void usingInfoInsideList() {
+		assertRendering("* list1\n    ! info message\n* list2", "<ul>\n<li>list1\n<div class=\"notification_info\">\n<p>info message</p>\n</div>\n</li>\n<li>list2</li>\n</ul>\n");
+	}
+
+	@Test
+	public void usingInfoInsideSubList() {
+		assertRendering("* list1\n    * list1.1\n      ! info message\n* list2", "<ul>\n<li>list1\n<ul>\n<li>list1.1\n<div class=\"notification_info\">\n<p>info message</p>\n</div>\n</li>\n</ul>\n</li>\n<li>list2</li>\n</ul>\n");
+	}
 }

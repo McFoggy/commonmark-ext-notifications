@@ -15,24 +15,19 @@
  */
 package fr.brouillard.oss.commonmark.ext.notifications;
 
-import java.util.Collections;
-import java.util.Locale;
-import java.util.Set;
-
 import org.commonmark.node.Node;
 import org.commonmark.renderer.NodeRenderer;
 import org.commonmark.renderer.html.HtmlNodeRendererContext;
 import org.commonmark.renderer.html.HtmlWriter;
+
+import java.util.Collections;
+import java.util.Set;
 
 public class NotificationNodeRenderer implements NodeRenderer {
 	private final HtmlNodeRendererContext context;
 	private final HtmlWriter htmlWriter;
 	private NotificationsExtension.DomElementMapper domElementMapper;
 	private NotificationsExtension.ClassMapper classMapper;
-
-	public NotificationNodeRenderer(HtmlNodeRendererContext context) {
-		this(context, DefaultWrapperImplementations.DEFAULT_DOM_ELEMENT_MAPPER, DefaultWrapperImplementations.DEFAULT_CSS_CLASS_MAPPER);
-	}
 
 	public NotificationNodeRenderer(HtmlNodeRendererContext context, NotificationsExtension.DomElementMapper domElementMapper, NotificationsExtension.ClassMapper classMapper) {
 		this.context = context;
