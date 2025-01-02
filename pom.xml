@@ -64,14 +64,14 @@
         <version.maven-jar-plugin>3.2.0</version.maven-jar-plugin>
         <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
         <version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
+        <version.maven-compiler-plugin>3.13.0</version.maven-compiler-plugin>
+        <version.pitest-plugin>1.16.1</version.pitest-plugin>
 
         <version.commonmark>0.24.0</version.commonmark>
         <version.junit>4.13.1</version.junit>
         <version.ossindex-maven-enforcer-rules>3.1.0</version.ossindex-maven-enforcer-rules>
 
         <module-name>fr.brouillard.oss.commonmark.ext.notifications</module-name>
-        <version.maven-compiler-plugin>3.13.0</version.maven-compiler-plugin>
-        <version.pitest-parent>1.16.1</version.pitest-parent>
     </properties>
 
     <developers>
@@ -86,16 +86,6 @@
         </developer>
     </developers>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-parent</artifactId>
-                <version>${version.pitest-parent}</version>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.commonmark</groupId>
@@ -128,6 +118,7 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
+                <version>${version.pitest-plugin}</version>
                 <configuration>
                     <targetClasses>
                         <param>fr.brouillard.oss.commonmark.*</param>
