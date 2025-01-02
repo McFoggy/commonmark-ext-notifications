@@ -15,11 +15,7 @@
  */
 package fr.brouillard.oss.commonmark.ext.notifications;
 
-import org.commonmark.Extension;
 import org.commonmark.parser.Parser;
-import org.commonmark.renderer.NodeRenderer;
-import org.commonmark.renderer.html.HtmlNodeRendererContext;
-import org.commonmark.renderer.html.HtmlNodeRendererFactory;
 import org.commonmark.renderer.html.HtmlRenderer;
 
 import java.util.Objects;

@@ -15,17 +15,12 @@
  */
 package fr.brouillard.oss.commonmark.ext.notifications;
 
+import fr.brouillard.oss.commonmark.ext.notifications.internal.Constants;
+import org.commonmark.node.Block;
+import org.commonmark.parser.block.*;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.commonmark.internal.util.Parsing;
-import org.commonmark.node.Block;
-import org.commonmark.parser.block.AbstractBlockParser;
-import org.commonmark.parser.block.AbstractBlockParserFactory;
-import org.commonmark.parser.block.BlockContinue;
-import org.commonmark.parser.block.BlockStart;
-import org.commonmark.parser.block.MatchedBlockParser;
-import org.commonmark.parser.block.ParserState;
 
 public class NotificationBlockParser extends AbstractBlockParser {
 	private static final Pattern NOTIFICATIONS_LINE = Pattern.compile("\\s*!([v!x]?)\\s(.*)");
@@ -60,7 +55,7 @@ public class NotificationBlockParser extends AbstractBlockParser {
         CharSequence currentLine = fullLine.subSequence(startOfAnalysis, fullLine.length());
 
 		Matcher matcher = NOTIFICATIONS_LINE.matcher(currentLine);
-		if (state.getIndent() < Parsing.CODE_BLOCK_INDENT && startOfAnalysis < fullLine.length() && matcher.matches()) {
+		if (state.getIndent() < Constants.CODE_BLOCK_INDENT && startOfAnalysis < fullLine.length() && matcher.matches()) {
 			if (type.equals(Notification.fromString(matcher.group(1)))) {
 				return BlockContinue.atColumn(state.getColumn() + state.getIndent() + matcher.start(2));
 			}
@@ -78,7 +73,7 @@ public class NotificationBlockParser extends AbstractBlockParser {
 
 			CharSequence line = fullLine.subSequence(startOfAnalysis, fullLine.length());
 			Matcher matcher = NOTIFICATIONS_LINE.matcher(line);
-			if (state.getIndent() < Parsing.CODE_BLOCK_INDENT && startOfAnalysis < fullLine.length() && matcher.matches()) {
+			if (state.getIndent() < Constants.CODE_BLOCK_INDENT && startOfAnalysis < fullLine.length() && matcher.matches()) {
 				return BlockStart
 						.of(new NotificationBlockParser(Notification.fromString(matcher.group(1))))
 						.atColumn(state.getColumn() + state.getIndent() + matcher.start(2));
